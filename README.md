@@ -12,3 +12,8 @@
 
     This could also be used to generate your password logins, if only you know the parameters.
     Remote hosting would have logs of parameters used, so run this locally only.
+
+    --
+    Generate your own string in linux: 
+    $ head -c 100000 /dev/urandom | tr -dc A-Za-z0-9\^\-_+=\% | head -c 8192; echo ''
+    That in itself could be used as a keyfile. But How do you recreate it again? It's random.
