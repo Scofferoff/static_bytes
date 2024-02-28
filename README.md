@@ -1,13 +1,18 @@
-    Relies on a set string [ in the file named "my_bits" ] to generate an identical string every time.
-    random_md5sum must have an md5sum that matchs "my_bits". $md5sum random > my_bits_md5sum
+    # MyBits
+    
     [ A little play with repeatable obfuscation. ]
+
+    ###A password generator that requires a password to generate??###
+
+    Relies on a set string [ in the file named "my_bits" ] to generate an identical final string every time.
+    "my_bits_md5sum" must have an md5sum that matches "my_bits".> `$md5sum my_bits > my_bits_md5sum`
     Reads the parameters to select chunks of data from a set string.
 
-    Requires: Node.js
+    **Requires:** Node.js
 
-    Usage: node app.js [options]
+    **Usage:** node app.js [options]
 
-    OPTIONS
+    **OPTIONS**
         -s : Start offset = Number
         -c : chunk size = Number
         -o : 1=Odd / 0=Even / 2=All chunks
@@ -20,5 +25,9 @@
 
     --
     Generate your own bits file in linux: 
-    $ head -c 100000 /dev/urandom | tr -dc A-Za-z0-9\^\-_+=\% | head -c 8192 > my_bits; echo ''
-    That in itself could be used as a keyfile. But How do you recreate it again? It's random.
+    `$ head -c 100000 /dev/urandom | tr -dc A-Za-z0-9\^\-_+=\% | head -c 8192 > my_bits; echo ''`
+    That in itself could be used as a keyfile. But How do you recreate it again if lost? It's random.
+
+    This could create a situation where you delete keyfiles after unlocking Veracypt volumes then remake again. [untested]
+
+    ## files: my_bits and my_bits_md5sum **MUST** stay unchanged once you start using this for things like keyfiles.
