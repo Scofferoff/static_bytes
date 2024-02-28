@@ -7,13 +7,13 @@ let md5HashWithFilename, _content;
 
 // Verify we are working with known data (unless a gremlin replaced it all - how would you know!?)
 try {
-    _content = fs.readFileSync('./random', 'utf8');
+    _content = fs.readFileSync('./my_bits', 'utf8');
 } catch (err) {
     console.error('Missing data file: ', err);
     process.exit(1);
 }
 try {
-    md5HashWithFilename = fs.readFileSync('./random_md5sum', 'utf8').trim();
+    md5HashWithFilename = fs.readFileSync('./my_bits_md5sum', 'utf8').trim();
 } catch (err) {
     console.error("missing MD5 hash file: ", err);
     process.exit(1);
@@ -29,7 +29,7 @@ const computedMD5Hash = hash.digest('hex');
 if (computedMD5Hash !== md5hash) {
     console.log("MD5 hash computed: " + computedMD5Hash);
     console.log("MD5 from file: " + md5hash);
-    console.log("File MD5 hash does not match!\nThis should not happen!\nDo you have backups?\nOr generate a new hash using: '$ md5sum ./random > ./random_md5sum'");
+    console.log("File MD5 hash does not match!\nThis should not happen!\nDo you have backups?\nOr generate a new hash using: '$ md5sum ./my_bits > ./my_bits_md5sum'");
     process.exit(1); // kill everything. 
 }
 
