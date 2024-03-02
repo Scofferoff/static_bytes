@@ -115,6 +115,11 @@ while ((_count < _strLength) && (_iter < parsedArgs['-i'])) {
     _count += parsedArgs['-c']; // next block
 }
 
+if (_output.length == 0) {
+    console.error("Zero length result, please check parameters");
+    process.exit(1);
+}
+
 if (parsedArgs['-f'] !== "-") {
     fs.writeFile(parsedArgs['-f'], _output, {flag: 'w' }, (err) => {
         if (err) {

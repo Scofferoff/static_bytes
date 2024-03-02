@@ -1,1 +1,1 @@
-require('./getBytes');
+require('./mybits');
